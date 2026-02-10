@@ -29,12 +29,35 @@ class AvatarDisplay extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: AppColors.primary.withAlpha(20),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            AppColors.primary.withAlpha(50),
+            AppColors.primary.withAlpha(80),
+          ],
+        ),
         shape: BoxShape.circle,
         border: Border.all(
-          color: AppColors.primary.withAlpha(60),
+          color: AppColors.primary.withAlpha(100),
           width: 3,
         ),
+        boxShadow: [
+          // Outer drop shadow for 3D floating effect
+          BoxShadow(
+            color: AppColors.primary.withAlpha(40),
+            blurRadius: 12,
+            spreadRadius: 2,
+            offset: const Offset(0, 6),
+          ),
+          // Subtle inner glow
+          BoxShadow(
+            color: Colors.white.withAlpha(60),
+            blurRadius: 8,
+            spreadRadius: -2,
+            offset: const Offset(0, -2),
+          ),
+        ],
       ),
       child: Stack(
         alignment: Alignment.center,

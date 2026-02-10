@@ -38,6 +38,9 @@ class _RouterAuthNotifier extends ChangeNotifier {
   }
 }
 
+/// Root navigator key so pushed screens stack correctly and back gesture works
+final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
 /// Router configuration provider
 final routerProvider = Provider<GoRouter>((ref) {
   final authNotifier = _RouterAuthNotifier(ref.read(authProvider));
@@ -47,6 +50,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   });
 
   return GoRouter(
+    navigatorKey: _rootNavigatorKey,
     initialLocation: '/auth/welcome',
     debugLogDiagnostics: true,
     refreshListenable: authNotifier,
@@ -134,26 +138,31 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Auth routes (outside shell - no bottom nav)
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/auth/welcome',
         name: 'welcome',
         builder: (context, state) => const WelcomeScreen(),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/auth/login',
         name: 'login',
         builder: (context, state) => const LoginScreen(),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/auth/register',
         name: 'register',
         builder: (context, state) => const RegisterScreen(),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/auth/pin-setup',
         name: 'pin-setup',
         builder: (context, state) => const PinSetupScreen(),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/auth/forgot-password',
         name: 'forgot-password',
         builder: (context, state) => const ForgotPasswordScreen(),
@@ -161,6 +170,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Child routes (outside shell - pushed on top)
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/child/add',
         name: 'add-child',
         builder: (context, state) => const AddChildScreen(),
@@ -168,11 +178,13 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Settings sub-routes (outside shell - pushed on top)
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/settings/change-pin',
         name: 'change-pin',
         builder: (context, state) => const ChangePinScreen(),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/settings/change-password',
         name: 'change-password',
         builder: (context, state) => const ChangePasswordScreen(),
@@ -180,6 +192,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Session routes (outside shell - full screen flow)
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/session/preview',
         name: 'session-preview',
         builder: (context, state) {
@@ -193,6 +206,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Kid mode session flow (outside shell - full screen)
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/session/:id/play',
         name: 'session-play',
         builder: (context, state) => KidReadyScreen(
@@ -200,6 +214,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/session/:id/drill',
         name: 'session-drill',
         builder: (context, state) => KidDrillScreen(
@@ -207,6 +222,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/session/:id/complete',
         name: 'session-complete',
         builder: (context, state) => SessionCompleteScreen(
@@ -214,6 +230,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/session/:id/summary',
         name: 'session-summary',
         builder: (context, state) => SessionSummaryScreen(
@@ -223,6 +240,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Direct access routes (outside shell - pushed from specific links)
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/avatar-shop/:childId',
         name: 'avatar-shop-direct',
         builder: (context, state) => AvatarShopScreen(
@@ -230,6 +248,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/progress/:childId',
         name: 'progress-direct',
         builder: (context, state) => ProgressScreen(
@@ -239,6 +258,7 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Dev: Avatar preview page
       GoRoute(
+        parentNavigatorKey: _rootNavigatorKey,
         path: '/dev/avatar-preview',
         name: 'avatar-preview',
         builder: (context, state) => const AvatarPreviewScreen(),
