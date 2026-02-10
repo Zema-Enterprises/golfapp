@@ -27,7 +27,6 @@ class ApiClient {
         connectTimeout: ApiConfig.connectTimeout,
         receiveTimeout: ApiConfig.receiveTimeout,
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
       ),

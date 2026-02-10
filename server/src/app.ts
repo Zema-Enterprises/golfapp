@@ -34,6 +34,16 @@ export async function buildApp(): Promise<FastifyInstance> {
     },
   });
 
+  // Allow empty body with content-type application/json (mobile clients send this on GET)
+  app.addContentTypeParser('application/json', { parseAs: 'string' }, (_req, body, done) => {
+    try {
+      const str = (body as string).trim();
+      done(null, str ? JSON.parse(str) : undefined);
+    } catch (err) {
+      done(err as Error, undefined);
+    }
+  });
+
   // Security
   await app.register(helmet, {
     contentSecurityPolicy: false,
