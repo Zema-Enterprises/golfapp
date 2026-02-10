@@ -2,6 +2,7 @@ import { buildApp } from './app.js';
 import { env } from './config/env.js';
 import { connectDatabase, disconnectDatabase } from './config/database.js';
 import { seedRolesAndPermissions } from './scripts/seed-roles.js';
+import { seedData } from './scripts/seed-data.js';
 
 async function main(): Promise<void> {
   const app = await buildApp();
@@ -9,8 +10,9 @@ async function main(): Promise<void> {
   // Connect to database
   await connectDatabase();
 
-  // Ensure roles and permissions exist
+  // Ensure roles, permissions, drills and avatar items exist
   await seedRolesAndPermissions();
+  await seedData();
 
   // Graceful shutdown
   const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM'];
