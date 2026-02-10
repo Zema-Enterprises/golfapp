@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Golf Glove - White glove on left hand -->
+  <!-- Glove body (covers left hand circle at cx:53 cy:210 r:12) -->
+  <circle cx="53" cy="210" r="13" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="0.8"/>
+  <!-- Finger definition lines -->
+  <path d="M44 203 Q43 198 44 194" stroke="#E0E0E0" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+  <path d="M48 201 Q47 196 48 192" stroke="#E0E0E0" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+  <path d="M53 200 Q53 195 53 191" stroke="#E0E0E0" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+  <path d="M58 201 Q59 196 58 193" stroke="#E0E0E0" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+  <!-- Thumb -->
+  <path d="M63 206 Q68 202 67 208" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="0.8"/>
+  <!-- Wrist cuff -->
+  <path d="M40 218 Q45 222 53 223 Q61 222 66 218 Q65 215 53 216 Q41 215 40 218 Z" fill="#F5F5F5" stroke="#E0E0E0" stroke-width="0.6"/>
+  <!-- Velcro closure tab -->
+  <rect x="46" y="218" width="14" height="4" rx="2" fill="#EEEEEE" stroke="#BDBDBD" stroke-width="0.5"/>
+  <!-- Logo dot -->
+  <circle cx="53" cy="219" r="1.2" fill="#BDBDBD"/>
+  <!-- Knuckle padding detail -->
+  <path d="M43 207 Q48 204 53 205 Q58 204 63 207" stroke="#E0E0E0" stroke-width="0.6" fill="none"/>
+  <!-- Palm grip texture -->
+  <path d="M46 212 L50 212" stroke="#E8E8E8" stroke-width="0.5"/>
+  <path d="M47 214 L51 214" stroke="#E8E8E8" stroke-width="0.5"/>
+  <path d="M55 212 L59 212" stroke="#E8E8E8" stroke-width="0.5"/>
+  <path d="M54 214 L58 214" stroke="#E8E8E8" stroke-width="0.5"/>
+</svg>

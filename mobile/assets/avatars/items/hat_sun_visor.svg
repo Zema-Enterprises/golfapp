@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Sun Visor - Yellow, just brim + headband, open top -->
+  <!-- Headband -->
+  <path d="M60 43 Q65 37 80 34 Q100 31 120 34 Q135 37 140 43 Q138 50 130 48 Q100 42 70 48 Q62 50 60 43 Z" fill="#FDD835"/>
+  <!-- Headband inner edge -->
+  <path d="M63 45 Q70 40 85 37 Q100 35 115 37 Q130 40 137 45" stroke="#F9A825" stroke-width="1.5" fill="none"/>
+  <!-- Visor brim (wide, forward-facing) -->
+  <path d="M58 43 Q55 41 50 43 Q42 47 40 51 Q38 55 42 57 Q55 53 70 49 Q65 45 58 43 Z" fill="#FDD835"/>
+  <path d="M142 43 Q145 41 150 43 Q158 47 160 51 Q162 55 158 57 Q145 53 130 49 Q135 45 142 43 Z" fill="#FDD835"/>
+  <!-- Main front brim -->
+  <path d="M60 45 Q80 39 100 37 Q120 39 140 45 Q145 47 148 51 Q150 55 146 58 Q130 53 100 50 Q70 53 54 58 Q50 55 52 51 Q55 47 60 45 Z" fill="#FDD835"/>
+  <!-- Brim shadow/underside -->
+  <path d="M56 53 Q80 47 100 45 Q120 47 144 53 Q146 57 142 59 Q120 53 100 51 Q80 53 58 59 Q54 57 56 53 Z" fill="#F9A825" opacity="0.3"/>
+  <!-- Visor stitching -->
+  <path d="M62 47 Q100 39 138 47" stroke="#FBC02D" stroke-width="0.8" fill="none" stroke-dasharray="3,2"/>
+  <!-- Velcro tab at back -->
+  <rect x="94" y="46" width="12" height="4" rx="2" fill="#F9A825"/>
+</svg>

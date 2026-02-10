@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Cool Sunglasses - Dark frames positioned on face -->
+  <!-- Bridge (nose piece) -->
+  <path d="M93 58 Q100 62 107 58" stroke="#212121" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Left lens frame -->
+  <ellipse cx="82" cy="58" rx="14" ry="10" fill="none" stroke="#212121" stroke-width="2.5"/>
+  <!-- Left lens -->
+  <ellipse cx="82" cy="58" rx="12.5" ry="8.5" fill="#37474F" opacity="0.85"/>
+  <!-- Left lens shine -->
+  <ellipse cx="78" cy="55" rx="4" ry="3" fill="#FFFFFF" opacity="0.15"/>
+  <!-- Right lens frame -->
+  <ellipse cx="118" cy="58" rx="14" ry="10" fill="none" stroke="#212121" stroke-width="2.5"/>
+  <!-- Right lens -->
+  <ellipse cx="118" cy="58" rx="12.5" ry="8.5" fill="#37474F" opacity="0.85"/>
+  <!-- Right lens shine -->
+  <ellipse cx="114" cy="55" rx="4" ry="3" fill="#FFFFFF" opacity="0.15"/>
+  <!-- Left temple arm -->
+  <path d="M68 55 Q62 54 60 56 Q58 58 57 62" stroke="#212121" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <!-- Right temple arm -->
+  <path d="M132 55 Q138 54 140 56 Q142 58 143 62" stroke="#212121" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,274 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// Auth Models (Reusable Module)
+// ============================================
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  isActive     Boolean   @default(true) @map("is_active")
+  isVerified   Boolean   @default(false) @map("is_verified")
+  roleId       String    @map("role_id")
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
+
+  role          Role           @relation(fields: [roleId], references: [id])
+  refreshTokens RefreshToken[]
+  parent        Parent?
+  settings      UserSettings?
+
+  @@map("users")
+}
+
+model Role {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  permissions RolePermission[]
+  users       User[]
+
+  @@map("roles")
+}
+
+model Permission {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  
+  roles RolePermission[]
+
+  @@map("permissions")
+}
+
+model RolePermission {
+  roleId       String @map("role_id")
+  permissionId String @map("permission_id")
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+  @@map("role_permissions")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String   @map("user_id")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  revokedAt DateTime? @map("revoked_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+// ============================================
+// GolfApp Extension: Parent Profile
+// ============================================
+
+model Parent {
+  id       String  @id @default(uuid())
+  userId   String  @unique @map("user_id")
+  pinHash  String? @map("pin_hash")
+  settings Json    @default("{}")
+
+  user     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  children Child[]
+
+  @@map("parents")
+}
+
+model Child {
+  id             String     @id @default(uuid())
+  parentId       String     @map("parent_id")
+  name           String
+  ageBand        AgeBand    @map("age_band")
+  skillLevel     SkillLevel @default(BEGINNER) @map("skill_level")
+  totalStars     Int        @default(0) @map("total_stars")
+  availableStars Int        @default(0) @map("available_stars")
+  avatarState    Json       @default("{}") @map("avatar_state")
+  createdAt      DateTime   @default(now()) @map("created_at")
+  updatedAt      DateTime   @updatedAt @map("updated_at")
+
+  parent        Parent            @relation(fields: [parentId], references: [id], onDelete: Cascade)
+  sessions      Session[]
+  unlockedItems ChildAvatarItem[]
+  streak        Streak?
+
+  @@map("children")
+}
+
+// ============================================
+// Drill & Session Models
+// ============================================
+
+model Drill {
+  id              String   @id @default(uuid())
+  title           String
+  ageBand         AgeBand  @map("age_band")
+  skillCategory   String   @map("skill_category")
+  durationMinutes Int      @default(5) @map("duration_minutes")
+  setup           String
+  childAction     String   @map("child_action")
+  parentCue       String   @map("parent_cue")
+  commonMistakes  String   @map("common_mistakes")
+  successCriteria String   @map("success_criteria")
+  imageUrl        String?  @map("image_url")
+  videoUrl        String?  @map("video_url")
+  isPremium       Boolean  @default(false) @map("is_premium")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  sessionDrills SessionDrill[]
+
+  @@map("drills")
+}
+
+model Session {
+  id               String        @id @default(uuid())
+  childId          String        @map("child_id")
+  status           SessionStatus @default(IN_PROGRESS)
+  totalStarsEarned Int           @default(0) @map("total_stars_earned")
+  startedAt        DateTime      @default(now()) @map("started_at")
+  completedAt      DateTime?     @map("completed_at")
+
+  child  Child          @relation(fields: [childId], references: [id], onDelete: Cascade)
+  drills SessionDrill[]
+
+  @@map("sessions")
+}
+
+model SessionDrill {
+  id          String    @id @default(uuid())
+  sessionId   String    @map("session_id")
+  drillId     String    @map("drill_id")
+  order       Int
+  completed   Boolean   @default(false)
+  starsEarned Int       @default(0) @map("stars_earned")
+  verifiedAt  DateTime? @map("verified_at")
+
+  session Session @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  drill   Drill   @relation(fields: [drillId], references: [id])
+
+  @@map("session_drills")
+}
+
+// ============================================
+// Avatar & Rewards Models
+// ============================================
+
+model AvatarItem {
+  id          String   @id @default(uuid())
+  type        ItemType
+  name        String
+  imageUrl    String   @map("image_url")
+  unlockStars Int      @default(0) @map("unlock_stars")
+  isPremium   Boolean  @default(false) @map("is_premium")
+  rarity      Rarity   @default(COMMON)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  childItems ChildAvatarItem[]
+
+  @@map("avatar_items")
+}
+
+model ChildAvatarItem {
+  id         String   @id @default(uuid())
+  childId    String   @map("child_id")
+  itemId     String   @map("item_id")
+  equipped   Boolean  @default(false)
+  unlockedAt DateTime @default(now()) @map("unlocked_at")
+
+  child Child      @relation(fields: [childId], references: [id], onDelete: Cascade)
+  item  AvatarItem @relation(fields: [itemId], references: [id])
+
+  @@unique([childId, itemId])
+  @@map("child_avatar_items")
+}
+
+model Streak {
+  id                 String    @id @default(uuid())
+  childId            String    @unique @map("child_id")
+  currentStreak      Int       @default(0) @map("current_streak")
+  longestStreak      Int       @default(0) @map("longest_streak")
+  lastSessionDate    DateTime? @map("last_session_date")
+  weeklySessionCount Int       @default(0) @map("weekly_session_count")
+  weekStartDate      DateTime  @map("week_start_date")
+
+  child Child @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@map("streaks")
+}
+
+model UserSettings {
+  id                   String   @id @default(uuid())
+  userId               String   @unique @map("user_id")
+  notificationsEnabled Boolean  @default(true) @map("notifications_enabled")
+  dailyReminderTime    String?  @map("daily_reminder_time")
+  soundEnabled         Boolean  @default(true) @map("sound_enabled")
+  theme                String   @default("light")
+  language             String   @default("en")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_settings")
+}
+
+// ============================================
+// Enums
+// ============================================
+
+enum AgeBand {
+  AGE_4_6
+  AGE_6_8
+  AGE_8_10
+}
+
+enum SkillLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum SessionStatus {
+  IN_PROGRESS
+  COMPLETED
+  ABANDONED
+}
+
+enum ItemType {
+  HAT
+  SHIRT
+  SHOES
+  CLUB_SKIN
+  ACCESSORY
+  MYSTERY
+}
+
+enum Rarity {
+  COMMON
+  UNCOMMON
+  RARE
+  EPIC
+  LEGENDARY
+}

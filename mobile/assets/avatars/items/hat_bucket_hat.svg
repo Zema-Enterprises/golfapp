@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Bucket Hat - Beige/khaki with wide brim all around -->
+  <!-- Hat crown -->
+  <path d="M68 43 Q70 13 100 10 Q130 13 132 43 Z" fill="#D4A76A"/>
+  <!-- Crown panel lines -->
+  <line x1="85" y1="13" x2="82" y2="43" stroke="#C49A5E" stroke-width="0.8" opacity="0.5"/>
+  <line x1="100" y1="10" x2="100" y2="43" stroke="#C49A5E" stroke-width="0.8" opacity="0.5"/>
+  <line x1="115" y1="13" x2="118" y2="43" stroke="#C49A5E" stroke-width="0.8" opacity="0.5"/>
+  <!-- Hatband -->
+  <path d="M65 41 Q100 33 135 41 Q137 45 135 47 Q100 39 65 47 Q63 45 65 41 Z" fill="#BF8F50"/>
+  <!-- Wide brim -->
+  <ellipse cx="100" cy="47" rx="55" ry="12" fill="#D4A76A"/>
+  <!-- Brim top highlight -->
+  <ellipse cx="100" cy="45" rx="52" ry="8" fill="#DEB87A" opacity="0.4"/>
+  <!-- Brim underside shadow -->
+  <path d="M48 50 Q100 57 152 50 Q150 55 100 59 Q50 55 48 50 Z" fill="#B8944A" opacity="0.3"/>
+  <!-- Top button -->
+  <circle cx="100" cy="11" r="2.5" fill="#BF8F50"/>
+</svg>

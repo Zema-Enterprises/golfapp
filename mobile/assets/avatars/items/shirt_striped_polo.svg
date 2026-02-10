@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Striped Polo - White with navy blue horizontal stripes, collar -->
+  <defs>
+    <clipPath id="torso-clip">
+      <rect x="60" y="110" width="80" height="110" rx="15"/>
+      <path d="M62 112 Q55 110 46 115 Q40 118 40 130 Q40 150 44 155 Q48 158 55 156 Q62 154 64 148 L64 112 Z"/>
+      <path d="M138 112 Q145 110 154 115 Q160 118 160 130 Q160 150 156 155 Q152 158 145 156 Q138 154 136 148 L136 112 Z"/>
+    </clipPath>
+  </defs>
+  <!-- White base -->
+  <rect x="60" y="110" width="80" height="110" rx="15" fill="#FFFFFF"/>
+  <!-- Left short sleeve -->
+  <path d="M62 112 Q55 110 46 115 Q40 118 40 130 Q40 150 44 155 Q48 158 55 156 Q62 154 64 148 L64 112 Z" fill="#FFFFFF"/>
+  <!-- Right short sleeve -->
+  <path d="M138 112 Q145 110 154 115 Q160 118 160 130 Q160 150 156 155 Q152 158 145 156 Q138 154 136 148 L136 112 Z" fill="#FFFFFF"/>
+  <!-- Navy blue horizontal stripes (clipped to shirt shape) -->
+  <g clip-path="url(#torso-clip)">
+    <rect x="35" y="118" width="130" height="6" fill="#1565C0"/>
+    <rect x="35" y="132" width="130" height="6" fill="#1565C0"/>
+    <rect x="35" y="146" width="130" height="6" fill="#1565C0"/>
+    <rect x="35" y="160" width="130" height="6" fill="#1565C0"/>
+    <rect x="35" y="174" width="130" height="6" fill="#1565C0"/>
+    <rect x="35" y="188" width="130" height="6" fill="#1565C0"/>
+    <rect x="35" y="202" width="130" height="6" fill="#1565C0"/>
+  </g>
+  <!-- Sleeve hem left -->
+  <path d="M44 152 Q52 156 62 150" stroke="#1565C0" stroke-width="1.5" fill="none"/>
+  <!-- Sleeve hem right -->
+  <path d="M156 152 Q148 156 138 150" stroke="#1565C0" stroke-width="1.5" fill="none"/>
+  <!-- Collar -->
+  <path d="M82 108 Q85 104 90 102 Q95 100 100 99 Q105 100 110 102 Q115 104 118 108 L114 116 Q110 112 100 110 Q90 112 86 116 Z" fill="#FFFFFF" stroke="#1565C0" stroke-width="0.8"/>
+  <!-- Collar fold left -->
+  <path d="M82 108 L86 116 Q84 114 82 112 Z" fill="#E8EAF6"/>
+  <!-- Collar fold right -->
+  <path d="M118 108 L114 116 Q116 114 118 112 Z" fill="#E8EAF6"/>
+  <!-- Placket -->
+  <line x1="100" y1="110" x2="100" y2="138" stroke="#BDBDBD" stroke-width="1"/>
+  <!-- Buttons -->
+  <circle cx="100" cy="116" r="1.5" fill="#1565C0"/>
+  <circle cx="100" cy="126" r="1.5" fill="#1565C0"/>
+  <!-- Bottom hem -->
+  <path d="M62 218 Q100 222 138 218" stroke="#BDBDBD" stroke-width="1" fill="none"/>
+</svg>

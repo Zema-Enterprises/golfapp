@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- White Sneakers with blue sole -->
+  <!-- Left sneaker -->
+  <g>
+    <!-- Sole -->
+    <rect x="60" y="370" width="38" height="8" rx="4" fill="#2196F3"/>
+    <!-- Shoe body -->
+    <rect x="62" y="355" width="34" height="18" rx="9" fill="#FFFFFF"/>
+    <!-- Shoe tongue -->
+    <path d="M72 355 Q79 350 86 355" fill="#F5F5F5"/>
+    <!-- Lace detail -->
+    <path d="M74 358 L84 358" stroke="#BDBDBD" stroke-width="0.8"/>
+    <path d="M75 361 L83 361" stroke="#BDBDBD" stroke-width="0.8"/>
+    <!-- Swoosh/stripe detail -->
+    <path d="M66 365 Q74 360 88 364" stroke="#2196F3" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- Toe cap -->
+    <path d="M62 365 Q60 362 62 358 Q64 356 68 356" stroke="#E0E0E0" stroke-width="0.8" fill="none"/>
+  </g>
+  <!-- Right sneaker -->
+  <g>
+    <!-- Sole -->
+    <rect x="102" y="370" width="38" height="8" rx="4" fill="#2196F3"/>
+    <!-- Shoe body -->
+    <rect x="104" y="355" width="34" height="18" rx="9" fill="#FFFFFF"/>
+    <!-- Shoe tongue -->
+    <path d="M114 355 Q121 350 128 355" fill="#F5F5F5"/>
+    <!-- Lace detail -->
+    <path d="M116 358 L126 358" stroke="#BDBDBD" stroke-width="0.8"/>
+    <path d="M117 361 L125 361" stroke="#BDBDBD" stroke-width="0.8"/>
+    <!-- Swoosh/stripe detail -->
+    <path d="M108 365 Q116 360 130 364" stroke="#2196F3" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- Toe cap -->
+    <path d="M104 365 Q102 362 104 358 Q106 356 110 356" stroke="#E0E0E0" stroke-width="0.8" fill="none"/>
+  </g>
+</svg>

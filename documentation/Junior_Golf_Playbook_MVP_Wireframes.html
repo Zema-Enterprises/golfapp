@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Golf Playbook - MVP Wireframes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark: #1B5E20;
+      --green-main: #2E7D32;
+      --green-light: #4CAF50;
+      --green-pale: #E8F5E9;
+      --blue-sky: #03A9F4;
+      --blue-light: #B3E5FC;
+      --orange: #FF9800;
+      --orange-light: #FFE0B2;
+      --yellow: #FFEB3B;
+      --purple: #9C27B0;
+      --red: #F44336;
+      --gray-100: #F5F5F5;
+      --gray-200: #EEEEEE;
+      --gray-300: #E0E0E0;
+      --gray-400: #BDBDBD;
+      --gray-500: #9E9E9E;
+      --gray-600: #757575;
+      --gray-700: #616161;
+      --gray-800: #424242;
+      --white: #FFFFFF;
+      --shadow: 0 4px 12px rgba(0,0,0,0.15);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--white);
+    }
+
+    .header h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.5rem;
+      color: var(--green-light);
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: var(--gray-400);
+      font-size: 1.1rem;
+    }
+
+    /* Navigation */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+    }
+
+    .nav-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-section-title {
+      color: var(--gray-400);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-left: 10px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .nav-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--gray-700);
+      color: var(--white);
+    }
+
+    .nav-btn:hover {
+      background: var(--gray-600);
+      transform: translateY(-2px);
+    }
+
+    .nav-btn.active {
+      background: var(--green-main);
+      color: var(--white);
+    }
+
+    .nav-btn.kid-mode {
+      background: var(--blue-sky);
+    }
+
+    .nav-btn.kid-mode:hover {
+      background: #0288D1;
+    }
+
+    /* Phone Frame */
+    .phone-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .phone-wrapper {
+      text-align: center;
+    }
+
+    .phone-label {
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .phone {
+      width: 375px;
+      height: 812px;
+      background: var(--gray-800);
+      border-radius: 50px;
+      padding: 20px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--white);
+      border-radius: 35px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 30px;
+      background: var(--gray-800);
+      border-radius: 0 0 20px 20px;
+      z-index: 100;
+    }
+
+    /* Screen Content */
+    .screen {
+      display: none;
+      height: 100%;
+      flex-direction: column;
+      background: var(--white);
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* Status Bar */
+    .status-bar {
+      height: 44px;
+      padding: 12px 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .status-icons {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    /* Welcome Screen */
+    .welcome-screen {
+      background: linear-gradient(180deg, var(--green-main) 0%, var(--green-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      padding-top: 60px;
+    }
+
+    .welcome-logo {
+      width: 120px;
+      height: 120px;
+      background: var(--white);
+      border-radius: 30px;
+      margin: 60px auto 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .welcome-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .welcome-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 60px;
+      padding: 0 40px;
+    }
+
+    .welcome-buttons {
+      padding: 0 30px;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 16px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 15px;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--green-dark);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .btn-green {
+      background: var(--green-main);
+      color: var(--white);
+    }
+
+    .btn-green:hover {
+      background: var(--green-dark);
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-blue {
+      background: var(--blue-sky);
+      color: var(--white);
+    }
+
+    .btn-small {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      width: auto;
+    }
+
+    /* Form Screens */
+    .form-screen {
+      padding: 60px 25px 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-header {
+      margin-bottom: 30px;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 20px;
+      color: var(--gray-600);
+    }
+
+    .form-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--gray-800);
+      margin-bottom: 8px;
+    }
+
+    .form-subtitle {
+      color: var(--gray-500);
+      font-size: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--green-main);
+    }
+
+    .form-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    /* PIN Input */
+    .pin-container {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .pin-digit {
+      width: 50px;
+      height: 60px;
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--gray-800);
+    }
+
+    .pin-digit.filled {
+      border-color: var(--green-main);
+      background: var(--green-pale);
+    }
+
+    /* Age Selector */
+    .age-selector {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .age-option {
+      flex: 1;
+      padding: 15px 10px;
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .age-option:hover {
+      border-color: var(--green-light);
+    }
+
+    .age-option.selected {
+      border-color: var(--green-main);
+      background: var(--green-pale);
+    }
+
+    .age-option-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .age-option-desc {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-top: 4px;
+    }
+
+    /* Skill Level */
+    .skill-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .skill-option {
+      padding: 15px;
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .skill-option:hover {
+      border-color: var(--green-light);
+    }
+
+    .skill-option.selected {
+      border-color: var(--green-main);
+      background: var(--green-pale);
+    }
+
+    .skill-icon {
+      font-size: 1.5rem;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .skill-desc {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    /* Dashboard */
+    .dashboard {
+      background: var(--gray-100);
+    }
+
+    .dashboard-header {
+      background: var(--green-main);
+      color: var(--white);
+      padding: 60px 20px 25px;
+      border-radius: 0 0 30px 30px;
+    }
+
+    .dashboard-greeting {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .dashboard-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      margin-top: 5px;
+    }
+
+    .dashboard-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .section-title {
+      font-weight: 700;
+      color: var(--gray-700);
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    /* Child Card */
+    .child-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .child-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .child-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .child-avatar {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue-sky) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .child-info h3 {
+      font-size: 1.2rem;
+      color: var(--gray-800);
+    }
+
+    .child-info p {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    .child-stats {
+      display: flex;
+      gap: 20px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--gray-800);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    .start-practice-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--green-main);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.2s;
+    }
+
+    .start-practice-btn:hover {
+      background: var(--green-dark);
+    }
+
+    /* Add Child Card */
+    .add-child-card {
+      background: var(--white);
+      border: 2px dashed var(--gray-300);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .add-child-card:hover {
+      border-color: var(--green-main);
+      background: var(--green-pale);
+    }
+
+    .add-icon {
+      font-size: 2rem;
+      color: var(--gray-400);
+      margin-bottom: 10px;
+    }
+
+    .add-child-card p {
+      color: var(--gray-500);
+      font-weight: 600;
+    }
+
+    /* Bottom Nav */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      padding: 15px 20px;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--gray-400);
+      transition: color 0.2s;
+    }
+
+    .nav-item.active {
+      color: var(--green-main);
+    }
+
+    .nav-item:hover {
+      color: var(--green-main);
+    }
+
+    .nav-icon {
+      font-size: 1.5rem;
+    }
+
+    .nav-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    /* Session Preview */
+    .session-preview {
+      background: var(--gray-100);
+    }
+
+    .session-header {
+      background: var(--green-main);
+      color: var(--white);
+      padding: 60px 20px 25px;
+      text-align: center;
+    }
+
+    .session-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .session-child-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .session-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+    }
+
+    .session-meta {
+      opacity: 0.9;
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+
+    .drill-list {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .drill-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 15px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .drill-number {
+      width: 36px;
+      height: 36px;
+      background: var(--green-pale);
+      color: var(--green-main);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    .drill-info {
+      flex: 1;
+    }
+
+    .drill-name {
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .drill-duration {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    .drill-stars {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .session-footer {
+      padding: 20px;
+      background: var(--white);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* Kid Mode */
+    .kid-mode {
+      background: linear-gradient(180deg, var(--blue-sky) 0%, #0288D1 100%);
+    }
+
+    .kid-header {
+      padding: 50px 20px 20px;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .kid-avatar-large {
+      width: 80px;
+      height: 80px;
+      background: var(--white);
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .kid-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+    }
+
+    .kid-content {
+      flex: 1;
+      background: var(--white);
+      border-radius: 30px 30px 0 0;
+      padding: 25px;
+      margin-top: 20px;
+    }
+
+    .drill-visual {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--green-pale) 0%, var(--blue-light) 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .drill-title-kid {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      color: var(--gray-800);
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .drill-instruction {
+      background: var(--orange-light);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .drill-instruction p {
+      font-size: 1.1rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+    }
+
+    .kid-btn {
+      width: 100%;
+      padding: 25px;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow);
+    }
+
+    .kid-btn:hover {
+      transform: scale(1.02);
+    }
+
+    .kid-btn-go {
+      background: var(--green-main);
+      color: var(--white);
+    }
+
+    .kid-btn-done {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    /* PIN Verification Modal */
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+
+    .modal {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 30px;
+      width: 90%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .modal-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .modal-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.4rem;
+      color: var(--gray-800);
+      margin-bottom: 10px;
+    }
+
+    .modal-text {
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    /* Progress Indicator */
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gray-300);
+    }
+
+    .progress-dot.completed {
+      background: var(--green-main);
+    }
+
+    .progress-dot.current {
+      background: var(--orange);
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Session Summary */
+    .summary-screen {
+      background: linear-gradient(180deg, var(--green-main) 0%, var(--green-dark) 100%);
+      text-align: center;
+      color: var(--white);
+      padding: 60px 25px 25px;
+    }
+
+    .summary-celebration {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .summary-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .summary-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+
+    .summary-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .summary-stat {
+      text-align: center;
+    }
+
+    .summary-stat-value {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      color: var(--gray-800);
+    }
+
+    .summary-stat-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    .unlock-notification {
+      background: var(--orange-light);
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .unlock-icon {
+      font-size: 2rem;
+    }
+
+    .unlock-text {
+      text-align: left;
+    }
+
+    .unlock-title {
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+
+    .unlock-desc {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    /* Avatar Screen */
+    .avatar-screen {
+      background: var(--gray-100);
+    }
+
+    .avatar-display {
+      background: linear-gradient(180deg, var(--purple) 0%, #7B1FA2 100%);
+      padding: 60px 20px 30px;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .avatar-large {
+      width: 150px;
+      height: 150px;
+      background: var(--white);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .avatar-name {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+    }
+
+    .avatar-stars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .avatar-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .item-category {
+      margin-bottom: 25px;
+    }
+
+    .category-title {
+      font-weight: 700;
+      color: var(--gray-700);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .item-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .item-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .item-card.equipped {
+      border-color: var(--green-main);
+      background: var(--green-pale);
+    }
+
+    .item-card.locked {
+      opacity: 0.5;
+    }
+
+    .item-icon {
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    .item-cost {
+      font-size: 0.75rem;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* Progress Screen */
+    .progress-screen {
+      background: var(--gray-100);
+    }
+
+    .progress-header {
+      background: var(--orange);
+      color: var(--white);
+      padding: 60px 20px 25px;
+      text-align: center;
+    }
+
+    .progress-child {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .progress-title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.5rem;
+    }
+
+    .progress-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stats-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stats-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .stats-value {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.8rem;
+      color: var(--gray-800);
+    }
+
+    .stats-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    .focus-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px;
+      border-left: 4px solid var(--blue-sky);
+    }
+
+    .focus-title {
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 8px;
+    }
+
+    .focus-text {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+    }
+
+    /* Settings Screen */
+    .settings-screen {
+      background: var(--gray-100);
+    }
+
+    .settings-header {
+      background: var(--white);
+      padding: 60px 20px 20px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .settings-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gray-800);
+    }
+
+    .settings-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .settings-section {
+      background: var(--white);
+      border-radius: 16px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .settings-item {
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--gray-100);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .settings-item:last-child {
+      border-bottom: none;
+    }
+
+    .settings-item:hover {
+      background: var(--gray-50);
+    }
+
+    .settings-item-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .settings-icon {
+      font-size: 1.3rem;
+      color: var(--gray-500);
+    }
+
+    .settings-label {
+      font-weight: 600;
+      color: var(--gray-800);
+    }
+
+    .settings-arrow {
+      color: var(--gray-400);
+    }
+
+    .settings-item.danger .settings-label {
+      color: var(--red);
+    }
+
+    /* Annotations */
+    .annotation {
+      position: absolute;
+      background: var(--yellow);
+      color: var(--gray-800);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: var(--shadow);
+      z-index: 300;
+      max-width: 150px;
+    }
+
+    .annotation::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 8px solid transparent;
+    }
+
+    .annotation.left::after {
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left-color: var(--yellow);
+    }
+
+    .annotation.bottom::after {
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: var(--yellow);
+    }
+
+    /* Flow indicator */
+    .flow-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 12px;
+      padding: 15px 20px;
+      box-shadow: var(--shadow-lg);
+      max-width: 300px;
+    }
+
+    .flow-title {
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .flow-text {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+    }
+
+    .flow-next {
+      color: var(--green-main);
+      font-weight: 600;
+    }
+
+    /* Legend */
+    .legend {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .legend-title {
+      color: var(--white);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .legend-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-300);
+      font-size: 0.9rem;
+    }
+
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+    }
+
+    .legend-color.parent {
+      background: var(--green-main);
+    }
+
+    .legend-color.kid {
+      background: var(--blue-sky);
+    }
+
+    .legend-color.modal {
+      background: var(--orange);
+    }
+
+    /* Scope indicator badge */
+    .scope-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-left: 10px;
+    }
+
+    .scope-badge.confirmed {
+      background: var(--green-pale);
+      color: var(--green-dark);
+    }
+
+    .scope-badge.pending {
+      background: var(--orange-light);
+      color: #E65100;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>⛳ Junior Golf Playbook</h1>
+      <p>Interactive MVP Wireframes • Click buttons to navigate flows</p>
+    </div>
+
+    <div class="nav-bar">
+      <div class="nav-section">
+        <div class="nav-section-title">Onboarding</div>
+        <div class="nav-buttons">
+          <button class="nav-btn active" onclick="showScreen('welcome')">Welcome</button>
+          <button class="nav-btn" onclick="showScreen('signup')">Sign Up</button>
+          <button class="nav-btn" onclick="showScreen('pin-setup')">PIN Setup</button>
+          <button class="nav-btn" onclick="showScreen('add-child')">Add Child</button>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Parent Mode</div>
+        <div class="nav-buttons">
+          <button class="nav-btn" onclick="showScreen('dashboard')">Dashboard</button>
+          <button class="nav-btn" onclick="showScreen('session-preview')">Session Preview</button>
+          <button class="nav-btn" onclick="showScreen('progress')">Progress</button>
+          <button class="nav-btn" onclick="showScreen('settings')">Settings</button>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Kid Mode</div>
+        <div class="nav-buttons">
+          <button class="nav-btn kid-mode" onclick="showScreen('kid-ready')">Ready Screen</button>
+          <button class="nav-btn kid-mode" onclick="showScreen('kid-drill')">Drill Active</button>
+          <button class="nav-btn kid-mode" onclick="showScreen('kid-complete')">Drill Done</button>
+          <button class="nav-btn kid-mode" onclick="showScreen('pin-verify')">PIN Verify</button>
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-title">Rewards</div>
+        <div class="nav-buttons">
+          <button class="nav-btn" onclick="showScreen('session-summary')">Session Summary</button>
+          <button class="nav-btn" onclick="showScreen('avatar')">Avatar Shop</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-container">
+      <div class="phone-wrapper">
+        <div class="phone-label">📱 Current Screen</div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="notch"></div>
+
+            <!-- Welcome Screen -->
+            <div class="screen welcome-screen active" id="screen-welcome">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">
+                  <span>📶</span>
+                  <span>🔋</span>
+                </div>
+              </div>
+              <div class="welcome-logo">⛳</div>
+              <h1 class="welcome-title">Junior Golf Playbook</h1>
+              <p class="welcome-subtitle">Fun practice sessions for young golfers and their parents</p>
+              <div class="welcome-buttons">
+                <button class="btn btn-primary" onclick="showScreen('signup')">Sign Up</button>
+                <button class="btn btn-secondary" onclick="showScreen('login')">Sign In</button>
+              </div>
+            </div>
+
+            <!-- Sign Up Screen -->
+            <div class="screen" id="screen-signup">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen">
+                <div class="form-header">
+                  <button class="back-btn" onclick="showScreen('welcome')">←</button>
+                  <h1 class="form-title">Create Account</h1>
+                  <p class="form-subtitle">Let's get you started</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-input" placeholder="parent@email.com" value="parent@email.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-input" placeholder="••••••••" value="password123">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Confirm Password</label>
+                  <input type="password" class="form-input" placeholder="••••••••" value="password123">
+                </div>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-green" onclick="showScreen('pin-setup')">Continue</button>
+              </div>
+            </div>
+
+            <!-- PIN Setup Screen -->
+            <div class="screen" id="screen-pin-setup">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen">
+                <div class="form-header">
+                  <button class="back-btn" onclick="showScreen('signup')">←</button>
+                  <h1 class="form-title">Create Your PIN</h1>
+                  <p class="form-subtitle">This PIN verifies completed drills. Keep it secret from your child!</p>
+                </div>
+                <div class="pin-container">
+                  <input type="text" class="pin-digit filled" value="1" maxlength="1">
+                  <input type="text" class="pin-digit filled" value="2" maxlength="1">
+                  <input type="text" class="pin-digit filled" value="3" maxlength="1">
+                  <input type="text" class="pin-digit filled" value="4" maxlength="1">
+                </div>
+                <p style="text-align: center; color: var(--gray-500); font-size: 0.9rem;">Enter 4-6 digits</p>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-green" onclick="showScreen('add-child')">Set PIN</button>
+              </div>
+            </div>
+
+            <!-- Add Child Screen -->
+            <div class="screen" id="screen-add-child">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen">
+                <div class="form-header">
+                  <button class="back-btn" onclick="showScreen('pin-setup')">←</button>
+                  <h1 class="form-title">Add Your Child</h1>
+                  <p class="form-subtitle">We'll customize drills for their age</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Child's Name</label>
+                  <input type="text" class="form-input" placeholder="Enter name" value="Emma">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Age Group</label>
+                  <div class="age-selector">
+                    <div class="age-option" onclick="selectAge(this)">
+                      <div class="age-option-label">4-6</div>
+                      <div class="age-option-desc">Beginner</div>
+                    </div>
+                    <div class="age-option selected" onclick="selectAge(this)">
+                      <div class="age-option-label">6-8</div>
+                      <div class="age-option-desc">Explorer</div>
+                    </div>
+                    <div class="age-option" onclick="selectAge(this)">
+                      <div class="age-option-label">8-10</div>
+                      <div class="age-option-desc">Developer</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Skill Level</label>
+                  <div class="skill-selector">
+                    <div class="skill-option selected" onclick="selectSkill(this)">
+                      <div class="skill-icon">🌱</div>
+                      <div>
+                        <div class="skill-label">New to Golf</div>
+                        <div class="skill-desc">Just starting out</div>
+                      </div>
+                    </div>
+                    <div class="skill-option" onclick="selectSkill(this)">
+                      <div class="skill-icon">🌿</div>
+                      <div>
+                        <div class="skill-label">Some Experience</div>
+                        <div class="skill-desc">Knows the basics</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-green" onclick="showScreen('dashboard')">Add Child</button>
+              </div>
+            </div>
+
+            <!-- Dashboard Screen -->
+            <div class="screen dashboard" id="screen-dashboard">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="dashboard-header">
+                <p class="dashboard-greeting">Good morning! 👋</p>
+                <h1 class="dashboard-title">Ready to Practice?</h1>
+              </div>
+              <div class="dashboard-content">
+                <p class="section-title">Your Children</p>
+                <div class="child-card" onclick="showScreen('session-preview')">
+                  <div class="child-header">
+                    <div class="child-avatar">👧</div>
+                    <div class="child-info">
+                      <h3>Emma</h3>
+                      <p>Age 7 • Explorer Level</p>
+                    </div>
+                  </div>
+                  <div class="child-stats">
+                    <div class="stat">
+                      <div class="stat-value">⭐ 45</div>
+                      <div class="stat-label">Stars</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">🔥 3</div>
+                      <div class="stat-label">Day Streak</div>
+                    </div>
+                    <div class="stat">
+                      <div class="stat-value">📅 2</div>
+                      <div class="stat-label">This Week</div>
+                    </div>
+                  </div>
+                  <button class="start-practice-btn">Start Practice Session</button>
+                </div>
+                <div class="add-child-card" onclick="showScreen('add-child')">
+                  <div class="add-icon">➕</div>
+                  <p>Add Another Child</p>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item active">
+                  <div class="nav-icon">🏠</div>
+                  <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('progress')">
+                  <div class="nav-icon">📊</div>
+                  <div class="nav-label">Progress</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('avatar')">
+                  <div class="nav-icon">👤</div>
+                  <div class="nav-label">Avatar</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('settings')">
+                  <div class="nav-icon">⚙️</div>
+                  <div class="nav-label">Settings</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Session Preview Screen -->
+            <div class="screen session-preview" id="screen-session-preview">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="session-header">
+                <div class="session-child">
+                  <div class="session-child-avatar">👧</div>
+                  <span>Emma's Session</span>
+                </div>
+                <h1 class="session-title">Today's Practice</h1>
+                <p class="session-meta">4 drills • ~15 minutes • ⭐ 8 stars</p>
+              </div>
+              <div class="drill-list">
+                <div class="drill-card">
+                  <div class="drill-number">1</div>
+                  <div class="drill-info">
+                    <div class="drill-name">Putting Gate</div>
+                    <div class="drill-duration">4 min • Putting</div>
+                  </div>
+                  <div class="drill-stars">⭐ 2</div>
+                </div>
+                <div class="drill-card">
+                  <div class="drill-number">2</div>
+                  <div class="drill-info">
+                    <div class="drill-name">Target Toss</div>
+                    <div class="drill-duration">3 min • Chipping</div>
+                  </div>
+                  <div class="drill-stars">⭐ 2</div>
+                </div>
+                <div class="drill-card">
+                  <div class="drill-number">3</div>
+                  <div class="drill-info">
+                    <div class="drill-name">Balance Swing</div>
+                    <div class="drill-duration">4 min • Full Swing</div>
+                  </div>
+                  <div class="drill-stars">⭐ 2</div>
+                </div>
+                <div class="drill-card">
+                  <div class="drill-number">4</div>
+                  <div class="drill-info">
+                    <div class="drill-name">Grip Check</div>
+                    <div class="drill-duration">3 min • Fundamentals</div>
+                  </div>
+                  <div class="drill-stars">⭐ 2</div>
+                </div>
+              </div>
+              <div class="session-footer">
+                <button class="btn btn-green" onclick="showScreen('kid-ready')">Start Session → Kid Mode</button>
+                <button class="btn btn-secondary" style="color: var(--gray-600); border-color: var(--gray-300); margin-top: 10px;" onclick="showScreen('dashboard')">Cancel</button>
+              </div>
+            </div>
+
+            <!-- Kid Mode: Ready Screen -->
+            <div class="screen kid-mode" id="screen-kid-ready">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="kid-header">
+                <div class="kid-avatar-large">👧</div>
+                <h1 class="kid-name">Hi Emma!</h1>
+              </div>
+              <div class="kid-content">
+                <div class="drill-visual">⛳</div>
+                <h2 class="drill-title-kid">Ready to Play?</h2>
+                <div class="drill-instruction">
+                  <p>You have <strong>4 fun drills</strong> today!</p>
+                  <p style="margin-top: 10px;">Earn ⭐ stars to unlock cool stuff!</p>
+                </div>
+                <div class="progress-dots">
+                  <div class="progress-dot current"></div>
+                  <div class="progress-dot"></div>
+                  <div class="progress-dot"></div>
+                  <div class="progress-dot"></div>
+                </div>
+                <button class="kid-btn kid-btn-go" onclick="showScreen('kid-drill')">LET'S GO! 🚀</button>
+              </div>
+            </div>
+
+            <!-- Kid Mode: Drill Active -->
+            <div class="screen kid-mode" id="screen-kid-drill">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="kid-header">
+                <p style="opacity: 0.9;">Drill 1 of 4</p>
+                <h1 class="kid-name" style="font-size: 1.4rem;">Putting Gate</h1>
+              </div>
+              <div class="kid-content">
+                <div class="drill-visual">🥅</div>
+                <h2 class="drill-title-kid">Roll Through the Gate!</h2>
+                <div class="drill-instruction">
+                  <p>🎯 Put two tees in the ground</p>
+                  <p style="margin-top: 8px;">⛳ Roll the ball between them</p>
+                  <p style="margin-top: 8px;">🔄 Do it <strong>5 times!</strong></p>
+                </div>
+                <div class="progress-dots">
+                  <div class="progress-dot current"></div>
+                  <div class="progress-dot"></div>
+                  <div class="progress-dot"></div>
+                  <div class="progress-dot"></div>
+                </div>
+                <button class="kid-btn kid-btn-done" onclick="showScreen('kid-complete')">I DID IT! ✅</button>
+              </div>
+            </div>
+
+            <!-- Kid Mode: Drill Complete -->
+            <div class="screen kid-mode" id="screen-kid-complete">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="kid-header">
+                <div class="kid-avatar-large">🎉</div>
+                <h1 class="kid-name">Awesome!</h1>
+              </div>
+              <div class="kid-content">
+                <div class="drill-visual" style="background: linear-gradient(135deg, var(--orange-light) 0%, var(--yellow) 100%);">⭐</div>
+                <h2 class="drill-title-kid">Great Job, Emma!</h2>
+                <div class="drill-instruction" style="background: var(--green-pale);">
+                  <p>🙋 Ask your parent to verify!</p>
+                  <p style="margin-top: 8px; font-size: 0.9rem; color: var(--gray-500);">They need to enter their secret PIN</p>
+                </div>
+                <button class="kid-btn kid-btn-go" onclick="showScreen('pin-verify')">GET PARENT 👨‍👩‍👧</button>
+              </div>
+            </div>
+
+            <!-- PIN Verification Screen -->
+            <div class="screen" id="screen-pin-verify">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen" style="background: var(--gray-100);">
+                <div class="form-header">
+                  <h1 class="form-title">Parent Verification</h1>
+                  <p class="form-subtitle">Enter your PIN to confirm Emma completed the drill</p>
+                </div>
+                <div style="background: white; border-radius: 20px; padding: 25px; text-align: center;">
+                  <div style="font-size: 3rem; margin-bottom: 15px;">🔐</div>
+                  <h3 style="color: var(--gray-800); margin-bottom: 5px;">Putting Gate</h3>
+                  <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 20px;">Did Emma complete this drill?</p>
+                  <div class="pin-container">
+                    <input type="password" class="pin-digit filled" value="•" maxlength="1">
+                    <input type="password" class="pin-digit filled" value="•" maxlength="1">
+                    <input type="password" class="pin-digit filled" value="•" maxlength="1">
+                    <input type="password" class="pin-digit" value="" maxlength="1">
+                  </div>
+                </div>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-green" onclick="showScreen('kid-drill-2')">Verify & Award ⭐ 2 Stars</button>
+                <button class="btn" style="background: var(--gray-200); color: var(--gray-600);" onclick="showScreen('kid-drill')">Not Yet - Try Again</button>
+              </div>
+            </div>
+
+            <!-- Kid Mode: Drill 2 (after verification) -->
+            <div class="screen kid-mode" id="screen-kid-drill-2">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="kid-header">
+                <p style="opacity: 0.9;">Drill 2 of 4</p>
+                <h1 class="kid-name" style="font-size: 1.4rem;">Target Toss</h1>
+              </div>
+              <div class="kid-content">
+                <div class="drill-visual">🎯</div>
+                <h2 class="drill-title-kid">Chip to the Target!</h2>
+                <div class="drill-instruction">
+                  <p>🧺 Put a towel on the grass</p>
+                  <p style="margin-top: 8px;">⛳ Chip balls onto the towel</p>
+                  <p style="margin-top: 8px;">🔄 Land <strong>3 on target!</strong></p>
+                </div>
+                <div class="progress-dots">
+                  <div class="progress-dot completed"></div>
+                  <div class="progress-dot current"></div>
+                  <div class="progress-dot"></div>
+                  <div class="progress-dot"></div>
+                </div>
+                <button class="kid-btn kid-btn-done" onclick="showScreen('session-summary')">I DID IT! ✅</button>
+              </div>
+            </div>
+
+            <!-- Session Summary -->
+            <div class="screen summary-screen" id="screen-session-summary">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="summary-celebration">🎉</div>
+              <h1 class="summary-title">Session Complete!</h1>
+              <div class="summary-card">
+                <div class="summary-stats">
+                  <div class="summary-stat">
+                    <div class="summary-stat-value">⭐ 8</div>
+                    <div class="summary-stat-label">Stars Earned</div>
+                  </div>
+                  <div class="summary-stat">
+                    <div class="summary-stat-value">🔥 4</div>
+                    <div class="summary-stat-label">Day Streak!</div>
+                  </div>
+                  <div class="summary-stat">
+                    <div class="summary-stat-value">4/4</div>
+                    <div class="summary-stat-label">Drills Done</div>
+                  </div>
+                </div>
+                <div class="unlock-notification">
+                  <div class="unlock-icon">🎁</div>
+                  <div class="unlock-text">
+                    <div class="unlock-title">New Item Unlocked!</div>
+                    <div class="unlock-desc">You can now buy the Cool Sunglasses!</div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" onclick="showScreen('avatar')">Customize Avatar 👤</button>
+              <button class="btn btn-secondary" onclick="showScreen('dashboard')">Back to Home</button>
+            </div>
+
+            <!-- Avatar Screen -->
+            <div class="screen avatar-screen" id="screen-avatar">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="avatar-display">
+                <div class="avatar-large">👧</div>
+                <h1 class="avatar-name">Emma's Avatar</h1>
+                <div class="avatar-stars">⭐ 53 Stars</div>
+              </div>
+              <div class="avatar-content">
+                <div class="item-category">
+                  <div class="category-title">🧢 Hats</div>
+                  <div class="item-grid">
+                    <div class="item-card equipped">
+                      <div class="item-icon">🧢</div>
+                      <div class="item-cost">Equipped</div>
+                    </div>
+                    <div class="item-card">
+                      <div class="item-icon">👒</div>
+                      <div class="item-cost">⭐ 10</div>
+                    </div>
+                    <div class="item-card">
+                      <div class="item-icon">🎩</div>
+                      <div class="item-cost">⭐ 25</div>
+                    </div>
+                    <div class="item-card locked">
+                      <div class="item-icon">🔒</div>
+                      <div class="item-cost">⭐ 50</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item-category">
+                  <div class="category-title">👕 Shirts</div>
+                  <div class="item-grid">
+                    <div class="item-card equipped">
+                      <div class="item-icon">👕</div>
+                      <div class="item-cost">Equipped</div>
+                    </div>
+                    <div class="item-card">
+                      <div class="item-icon">🎽</div>
+                      <div class="item-cost">⭐ 15</div>
+                    </div>
+                    <div class="item-card">
+                      <div class="item-icon">🦺</div>
+                      <div class="item-cost">⭐ 20</div>
+                    </div>
+                    <div class="item-card locked">
+                      <div class="item-icon">🔒</div>
+                      <div class="item-cost">⭐ 40</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="item-category">
+                  <div class="category-title">🎁 Mystery Items <span class="scope-badge pending">Streak Reward</span></div>
+                  <div class="item-grid">
+                    <div class="item-card" style="background: linear-gradient(135deg, var(--purple) 0%, #E91E63 100%);">
+                      <div class="item-icon">❓</div>
+                      <div class="item-cost" style="color: white;">7-day streak</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item" onclick="showScreen('dashboard')">
+                  <div class="nav-icon">🏠</div>
+                  <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('progress')">
+                  <div class="nav-icon">📊</div>
+                  <div class="nav-label">Progress</div>
+                </div>
+                <div class="nav-item active">
+                  <div class="nav-icon">👤</div>
+                  <div class="nav-label">Avatar</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('settings')">
+                  <div class="nav-icon">⚙️</div>
+                  <div class="nav-label">Settings</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Progress Screen -->
+            <div class="screen progress-screen" id="screen-progress">
+              <div class="status-bar" style="color: white;">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="progress-header">
+                <div class="progress-child">
+                  <div class="session-child-avatar" style="background: white;">👧</div>
+                  <span>Emma's Progress</span>
+                </div>
+                <h1 class="progress-title">Great Work This Week!</h1>
+              </div>
+              <div class="progress-content">
+                <div class="stats-grid">
+                  <div class="stats-card">
+                    <div class="stats-icon">⭐</div>
+                    <div class="stats-value">53</div>
+                    <div class="stats-label">Total Stars</div>
+                  </div>
+                  <div class="stats-card">
+                    <div class="stats-icon">🔥</div>
+                    <div class="stats-value">4 days</div>
+                    <div class="stats-label">Current Streak</div>
+                  </div>
+                  <div class="stats-card">
+                    <div class="stats-icon">📅</div>
+                    <div class="stats-value">3</div>
+                    <div class="stats-label">Sessions This Week</div>
+                  </div>
+                  <div class="stats-card">
+                    <div class="stats-icon">⛳</div>
+                    <div class="stats-value">12</div>
+                    <div class="stats-label">Drills Completed</div>
+                  </div>
+                </div>
+                <p class="section-title">Suggested Focus</p>
+                <div class="focus-card">
+                  <div class="focus-title">🎯 Work on Chipping</div>
+                  <div class="focus-text">Emma has done great with putting! Let's add more chipping drills to build confidence around the green.</div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item" onclick="showScreen('dashboard')">
+                  <div class="nav-icon">🏠</div>
+                  <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item active">
+                  <div class="nav-icon">📊</div>
+                  <div class="nav-label">Progress</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('avatar')">
+                  <div class="nav-icon">👤</div>
+                  <div class="nav-label">Avatar</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('settings')">
+                  <div class="nav-icon">⚙️</div>
+                  <div class="nav-label">Settings</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Settings Screen -->
+            <div class="screen settings-screen" id="screen-settings">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="settings-header">
+                <h1 class="settings-title">Settings</h1>
+              </div>
+              <div class="settings-content">
+                <p class="section-title">Children</p>
+                <div class="settings-section">
+                  <div class="settings-item" onclick="showScreen('edit-child')">
+                    <div class="settings-item-left">
+                      <div class="settings-icon">👧</div>
+                      <div class="settings-label">Emma</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                  <div class="settings-item" onclick="showScreen('add-child')">
+                    <div class="settings-item-left">
+                      <div class="settings-icon">➕</div>
+                      <div class="settings-label">Add Child</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                </div>
+                <p class="section-title">Security</p>
+                <div class="settings-section">
+                  <div class="settings-item" onclick="showScreen('change-pin')">
+                    <div class="settings-item-left">
+                      <div class="settings-icon">🔐</div>
+                      <div class="settings-label">Change PIN</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-icon">🔑</div>
+                      <div class="settings-label">Change Password</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                </div>
+                <p class="section-title">Support</p>
+                <div class="settings-section">
+                  <div class="settings-item" onclick="showScreen('help')">
+                    <div class="settings-item-left">
+                      <div class="settings-icon">❓</div>
+                      <div class="settings-label">Help & FAQ</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-icon">📧</div>
+                      <div class="settings-label">Contact Us</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                </div>
+                <div class="settings-section">
+                  <div class="settings-item danger">
+                    <div class="settings-item-left">
+                      <div class="settings-icon">🚪</div>
+                      <div class="settings-label">Sign Out</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-nav">
+                <div class="nav-item" onclick="showScreen('dashboard')">
+                  <div class="nav-icon">🏠</div>
+                  <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('progress')">
+                  <div class="nav-icon">📊</div>
+                  <div class="nav-label">Progress</div>
+                </div>
+                <div class="nav-item" onclick="showScreen('avatar')">
+                  <div class="nav-icon">👤</div>
+                  <div class="nav-label">Avatar</div>
+                </div>
+                <div class="nav-item active">
+                  <div class="nav-icon">⚙️</div>
+                  <div class="nav-label">Settings</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edit Child Screen -->
+            <div class="screen" id="screen-edit-child">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen">
+                <div class="form-header">
+                  <button class="back-btn" onclick="showScreen('settings')">←</button>
+                  <h1 class="form-title">Edit Child</h1>
+                  <p class="form-subtitle">Update Emma's profile</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Child's Name</label>
+                  <input type="text" class="form-input" value="Emma">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Age Group</label>
+                  <div class="age-selector">
+                    <div class="age-option">
+                      <div class="age-option-label">4-6</div>
+                    </div>
+                    <div class="age-option selected">
+                      <div class="age-option-label">6-8</div>
+                    </div>
+                    <div class="age-option">
+                      <div class="age-option-label">8-10</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Skill Level</label>
+                  <div class="skill-selector">
+                    <div class="skill-option selected">
+                      <div class="skill-icon">🌱</div>
+                      <div><div class="skill-label">New to Golf</div></div>
+                    </div>
+                    <div class="skill-option">
+                      <div class="skill-icon">🌿</div>
+                      <div><div class="skill-label">Some Experience</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-green" onclick="showScreen('settings')">Save Changes</button>
+                <button class="btn" style="background: var(--red); color: white;">Remove Child</button>
+              </div>
+            </div>
+
+            <!-- Change PIN Screen -->
+            <div class="screen" id="screen-change-pin">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen">
+                <div class="form-header">
+                  <button class="back-btn" onclick="showScreen('settings')">←</button>
+                  <h1 class="form-title">Change PIN</h1>
+                  <p class="form-subtitle">Enter your current PIN first</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Current PIN</label>
+                  <div class="pin-container" style="justify-content: flex-start;">
+                    <input type="password" class="pin-digit" maxlength="1">
+                    <input type="password" class="pin-digit" maxlength="1">
+                    <input type="password" class="pin-digit" maxlength="1">
+                    <input type="password" class="pin-digit" maxlength="1">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">New PIN</label>
+                  <div class="pin-container" style="justify-content: flex-start;">
+                    <input type="password" class="pin-digit" maxlength="1">
+                    <input type="password" class="pin-digit" maxlength="1">
+                    <input type="password" class="pin-digit" maxlength="1">
+                    <input type="password" class="pin-digit" maxlength="1">
+                  </div>
+                </div>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-green" onclick="showScreen('settings')">Update PIN</button>
+              </div>
+            </div>
+
+            <!-- Help Screen -->
+            <div class="screen" id="screen-help">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen" style="background: var(--gray-100);">
+                <div class="form-header">
+                  <button class="back-btn" onclick="showScreen('settings')">←</button>
+                  <h1 class="form-title">Help & FAQ</h1>
+                </div>
+                <div class="settings-section">
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-label">How do sessions work?</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-label">What is Kid Mode?</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-label">How do streaks work?</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-label">Why do I need a PIN?</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                  <div class="settings-item">
+                    <div class="settings-item-left">
+                      <div class="settings-label">How does the avatar shop work?</div>
+                    </div>
+                    <div class="settings-arrow">›</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Login Screen -->
+            <div class="screen" id="screen-login">
+              <div class="status-bar">
+                <span>9:41</span>
+                <div class="status-icons">📶 🔋</div>
+              </div>
+              <div class="form-screen">
+                <div class="form-header">
+                  <button class="back-btn" onclick="showScreen('welcome')">←</button>
+                  <h1 class="form-title">Welcome Back</h1>
+                  <p class="form-subtitle">Sign in to continue</p>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-input" placeholder="parent@email.com">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-input" placeholder="••••••••">
+                </div>
+                <p style="text-align: right; color: var(--green-main); font-weight: 600; cursor: pointer;">Forgot Password?</p>
+                <div style="flex: 1;"></div>
+                <button class="btn btn-green" onclick="showScreen('dashboard')">Sign In</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow Guide -->
+    <div class="flow-indicator" id="flow-guide">
+      <div class="flow-title">📍 Current Flow</div>
+      <div class="flow-text" id="flow-text">Welcome screen - Start of onboarding</div>
+      <div class="flow-next" id="flow-next">→ Click "Sign Up" to continue</div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <div class="legend-title">Screen Legend</div>
+      <div class="legend-items">
+        <div class="legend-item">
+          <div class="legend-color parent"></div>
+          <span>Parent Mode Screens</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color kid"></div>
+          <span>Kid Mode Screens</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color modal"></div>
+          <span>PIN Verification / Rewards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const flowGuides = {
+      'welcome': {
+        text: 'Welcome screen - Start of onboarding',
+        next: '→ Click "Sign Up" to begin registration'
+      },
+      'signup': {
+        text: 'Account creation with email/password',
+        next: '→ Click "Continue" to set up PIN'
+      },
+      'pin-setup': {
+        text: 'Parent PIN creation (4-6 digits)',
+        next: '→ Click "Set PIN" to add a child'
+      },
+      'add-child': {
+        text: 'Add child profile with age band & skill level',
+        next: '→ Click "Add Child" to go to dashboard'
+      },
+      'dashboard': {
+        text: 'Parent dashboard - Home screen',
+        next: '→ Click child card or "Start Practice" to begin session'
+      },
+      'session-preview': {
+        text: 'Session preview showing 3-4 auto-generated drills',
+        next: '→ Click "Start Session" to enter Kid Mode'
+      },
+      'kid-ready': {
+        text: 'Kid Mode: Ready screen with simple visuals',
+        next: '→ Click "LET\'S GO!" to start first drill'
+      },
+      'kid-drill': {
+        text: 'Kid Mode: Active drill with large buttons',
+        next: '→ Click "I DID IT!" when drill is complete'
+      },
+      'kid-complete': {
+        text: 'Kid Mode: Drill completion celebration',
+        next: '→ Click "GET PARENT" for PIN verification'
+      },
+      'pin-verify': {
+        text: 'Parent enters PIN to verify drill completion',
+        next: '→ Enter PIN and click "Verify" to award stars'
+      },
+      'kid-drill-2': {
+        text: 'Kid Mode: Next drill in session',
+        next: '→ Complete all drills to see session summary'
+      },
+      'session-summary': {
+        text: 'Session complete! Stars earned, streak updated',
+        next: '→ Go to Avatar shop or back to dashboard'
+      },
+      'avatar': {
+        text: 'Avatar customization with purchasable items',
+        next: '→ Tap items to equip or purchase with stars'
+      },
+      'progress': {
+        text: 'Progress view: stars, streaks, suggested focus',
+        next: '→ Navigate via bottom tabs'
+    },
+      'settings': {
+        text: 'Settings: Edit child, change PIN, help',
+        next: '→ Tap any option to see detail screen'
+      },
+      'edit-child': {
+        text: 'Edit child profile details',
+        next: '→ Save changes or remove child'
+      },
+      'change-pin': {
+        text: 'Change parent PIN',
+        next: '→ Enter current PIN, then new PIN'
+      },
+      'help': {
+        text: 'Help & FAQ section',
+        next: '→ Tap questions to expand answers'
+      },
+      'login': {
+        text: 'Returning user sign in',
+        next: '→ Enter credentials to access dashboard'
+      }
+    };
+
+    function showScreen(screenId) {
+      // Hide all screens
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      
+      // Show selected screen
+      const screen = document.getElementById('screen-' + screenId);
+      if (screen) {
+        screen.classList.add('active');
+      }
+      
+      // Update nav buttons
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Update flow guide
+      const guide = flowGuides[screenId];
+      if (guide) {
+        document.getElementById('flow-text').textContent = guide.text;
+        document.getElementById('flow-next').textContent = guide.next;
+      }
+    }
+
+    function selectAge(element) {
+      document.querySelectorAll('.age-option').forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    function selectSkill(element) {
+      document.querySelectorAll('.skill-option').forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+  </script>
+</body>
+</html>

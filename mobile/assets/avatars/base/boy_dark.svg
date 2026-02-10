@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Hair (short rounded) -->
+  <path d="M58 62 C58 28 75 10 100 8 C125 10 142 28 142 62 C135 48 118 40 100 38 C82 40 65 48 58 62 Z" fill="#3D2815"/>
+
+  <!-- Head -->
+  <circle cx="100" cy="65" r="40" fill="#5C3A1E"/>
+
+  <!-- Eyes -->
+  <ellipse cx="85" cy="60" rx="5" ry="6" fill="#0F0F0F"/>
+  <ellipse cx="115" cy="60" rx="5" ry="6" fill="#0F0F0F"/>
+  <ellipse cx="87" cy="58" rx="2" ry="2.5" fill="#FFFFFF"/>
+  <ellipse cx="117" cy="58" rx="2" ry="2.5" fill="#FFFFFF"/>
+
+  <!-- Eyebrows -->
+  <path d="M77 50 Q85 46 93 50" stroke="#2D1B10" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M107 50 Q115 46 123 50" stroke="#2D1B10" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Mouth -->
+  <path d="M90 78 Q100 88 110 78" stroke="#7A4A30" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Cheeks (blush) -->
+  <ellipse cx="72" cy="72" rx="8" ry="5" fill="#7A5030" opacity="0.4"/>
+  <ellipse cx="128" cy="72" rx="8" ry="5" fill="#7A5030" opacity="0.4"/>
+
+  <!-- Neck -->
+  <rect x="90" y="100" width="20" height="12" rx="3" fill="#5C3A1E"/>
+
+  <!-- Torso (polo shirt) -->
+  <rect x="60" y="110" width="80" height="110" rx="15" fill="#B8D8E8"/>
+  <!-- Collar -->
+  <path d="M80 110 L92 120 L100 114 L108 120 L120 110" fill="#FFFFFF" stroke="#9DC3D6" stroke-width="0.8"/>
+  <!-- Collar fold line -->
+  <path d="M80 112 Q100 108 120 112" stroke="#9DC3D6" stroke-width="0.5" fill="none"/>
+  <!-- Buttons -->
+  <circle cx="100" cy="127" r="1.8" fill="#9DC3D6"/>
+  <circle cx="100" cy="135" r="1.8" fill="#9DC3D6"/>
+  <!-- Shirt bottom hem -->
+  <path d="M62 218 Q100 222 138 218" stroke="#9DC3D6" stroke-width="0.8" fill="none"/>
+
+  <!-- Left Arm -->
+  <rect x="42" y="115" width="22" height="90" rx="11" fill="#5C3A1E"/>
+  <!-- Left Hand -->
+  <circle cx="53" cy="210" r="12" fill="#5C3A1E"/>
+
+  <!-- Right Arm -->
+  <rect x="136" y="115" width="22" height="90" rx="11" fill="#5C3A1E"/>
+  <!-- Right Hand -->
+  <circle cx="147" cy="210" r="12" fill="#5C3A1E"/>
+
+  <!-- Waistband -->
+  <rect x="62" y="218" width="76" height="8" rx="4" fill="#A89474"/>
+  <!-- Left short leg -->
+  <path d="M62 226 L62 268 Q62 274 68 274 L91 274 Q97 274 97 268 L97 226 Z" fill="#C4B59D"/>
+  <!-- Right short leg -->
+  <path d="M103 226 L103 268 Q103 274 109 274 L132 274 Q138 274 138 268 L138 226 Z" fill="#C4B59D"/>
+  <!-- Center seam detail -->
+  <line x1="100" y1="226" x2="100" y2="235" stroke="#B8A482" stroke-width="0.8"/>
+
+  <!-- Left Leg -->
+  <rect x="68" y="272" width="24" height="86" rx="12" fill="#5C3A1E"/>
+
+  <!-- Right Leg -->
+  <rect x="108" y="272" width="24" height="86" rx="12" fill="#5C3A1E"/>
+
+  <!-- Left Shoe -->
+  <rect x="64" y="355" width="32" height="22" rx="10" fill="#F5F5F5"/>
+  <rect x="64" y="369" width="32" height="8" rx="4" fill="#E0E0E0"/>
+  <line x1="70" y1="362" x2="90" y2="362" stroke="#E8E8E8" stroke-width="0.8"/>
+
+  <!-- Right Shoe -->
+  <rect x="104" y="355" width="32" height="22" rx="10" fill="#F5F5F5"/>
+  <rect x="104" y="369" width="32" height="8" rx="4" fill="#E0E0E0"/>
+  <line x1="110" y1="362" x2="130" y2="362" stroke="#E8E8E8" stroke-width="0.8"/>
+</svg>

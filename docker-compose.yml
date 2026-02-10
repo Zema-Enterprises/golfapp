@@ -1,0 +1,53 @@
+services:
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      target: development
+    container_name: golfapp-api
+    ports:
+      - "8100:8100"
+    environment:
+      - NODE_ENV=development
+      - API_PORT=8100
+      - API_HOST=0.0.0.0
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/golfapp
+      - JWT_SECRET=${JWT_SECRET:-development-secret-key-change-me-in-production-at-least-32-chars}
+      - JWT_EXPIRES_IN=15m
+      - JWT_REFRESH_EXPIRES_IN=7d
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./server/src:/app/src:ro
+      - ./server/prisma:/app/prisma
+    networks:
+      - golfapp-network
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    container_name: golfapp-db
+    ports:
+      - "8101:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=golfapp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - golfapp-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  golfapp-network:
+    driver: bridge

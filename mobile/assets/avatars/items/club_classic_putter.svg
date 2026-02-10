@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Classic Putter - Gray steel, thin shaft from right hand down to ground -->
+  <!-- Grip (in hand area) -->
+  <rect x="145" y="195" width="6" height="28" rx="3" fill="#424242"/>
+  <!-- Grip texture lines -->
+  <line x1="146" y1="200" x2="150" y2="200" stroke="#616161" stroke-width="0.5"/>
+  <line x1="146" y1="203" x2="150" y2="203" stroke="#616161" stroke-width="0.5"/>
+  <line x1="146" y1="206" x2="150" y2="206" stroke="#616161" stroke-width="0.5"/>
+  <line x1="146" y1="209" x2="150" y2="209" stroke="#616161" stroke-width="0.5"/>
+  <line x1="146" y1="212" x2="150" y2="212" stroke="#616161" stroke-width="0.5"/>
+  <line x1="146" y1="215" x2="150" y2="215" stroke="#616161" stroke-width="0.5"/>
+  <!-- Shaft -->
+  <rect x="147" y="222" width="3" height="145" rx="1.5" fill="#9E9E9E"/>
+  <!-- Shaft highlight -->
+  <rect x="148" y="222" width="1" height="145" rx="0.5" fill="#BDBDBD" opacity="0.5"/>
+  <!-- Hosel (connects shaft to head) -->
+  <rect x="146" y="364" width="5" height="6" rx="1" fill="#757575"/>
+  <!-- Putter head -->
+  <rect x="134" y="368" width="28" height="8" rx="3" fill="#9E9E9E"/>
+  <!-- Putter face -->
+  <rect x="134" y="369" width="2" height="6" rx="1" fill="#757575"/>
+  <!-- Putter head top highlight -->
+  <rect x="136" y="369" width="24" height="2" rx="1" fill="#BDBDBD" opacity="0.4"/>
+  <!-- Putter head bottom weight -->
+  <rect x="136" y="374" width="24" height="1.5" rx="0.5" fill="#616161" opacity="0.5"/>
+</svg>

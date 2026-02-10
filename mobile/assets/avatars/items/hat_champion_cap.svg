@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400">
+  <!-- Champion Cap - Gold/yellow with a star on front -->
+  <!-- Cap dome -->
+  <path d="M62 50 Q65 13 100 10 Q135 13 138 50" fill="#FFD700"/>
+  <!-- Cap front panel -->
+  <path d="M62 50 Q65 17 100 14 Q115 15 120 23" fill="#FFC107"/>
+  <!-- Headband -->
+  <path d="M60 50 Q62 45 70 43 Q100 37 130 43 Q138 45 140 50 Q138 55 130 53 Q100 47 70 53 Q62 55 60 50 Z" fill="#F57F17"/>
+  <!-- Brim (forward-facing, slightly right) -->
+  <path d="M108 48 Q138 43 162 50 Q166 53 164 57 Q162 61 158 60 Q138 55 108 55 Z" fill="#F57F17"/>
+  <!-- Brim underside -->
+  <path d="M108 53 Q138 50 160 57 Q158 60 153 59 Q138 54 108 55 Z" fill="#E65100" opacity="0.25"/>
+  <!-- Star on front of cap -->
+  <polygon points="90,25 93,33 101,33 95,38 97,46 90,41 83,46 85,38 79,33 87,33" fill="#FFFFFF"/>
+  <!-- Star inner glow -->
+  <polygon points="90,28 92,33 98,33 93,37 95,43 90,39 85,43 87,37 82,33 88,33" fill="#FFF9C4" opacity="0.6"/>
+  <!-- Button on top -->
+  <circle cx="100" cy="11" r="3" fill="#F57F17"/>
+  <!-- Stitching -->
+  <path d="M80 15 Q100 11 120 15" stroke="#FFF9C4" stroke-width="0.8" fill="none" opacity="0.5"/>
+</svg>
