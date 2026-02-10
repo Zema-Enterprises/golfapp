@@ -1,12 +1,16 @@
 import { buildApp } from './app.js';
 import { env } from './config/env.js';
 import { connectDatabase, disconnectDatabase } from './config/database.js';
+import { seedRolesAndPermissions } from './scripts/seed-roles.js';
 
 async function main(): Promise<void> {
   const app = await buildApp();
 
   // Connect to database
   await connectDatabase();
+
+  // Ensure roles and permissions exist
+  await seedRolesAndPermissions();
 
   // Graceful shutdown
   const signals: NodeJS.Signals[] = ['SIGINT', 'SIGTERM'];

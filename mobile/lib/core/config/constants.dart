@@ -4,7 +4,7 @@ class EnvConfig {
 
   static const String apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://localhost:8100/api/v1',
+    defaultValue: 'https://golfapp-api.onrender.com/api/v1',
   );
 
   static const bool isProduction = bool.fromEnvironment(
